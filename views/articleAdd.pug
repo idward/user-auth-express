@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    //.main.container
+    .row
+        .col-md-8.col-md-offset-2
+            h1.display-4.m-b-2 #{title}
+            if article
+                form(action='/articles/update' method='POST')
+                    .form-group
+                        label(for='title') Title:
+                        input#title.form-control(type='text' name='title' placeholder='title' value=article.title)
+                    //.form-group
+                    //    label(for='author') Author:
+                    //    input#author.form-control(type='text' name='author' placeholder='author' value=article.author)
+                    .form-group
+                        label(for='content') Body:
+                        textarea#content.form-control(name='body' placeholder='content')= article.body
+                    input#articleId(type='hidden' name='articleId' value=article._id)
+                    button.btn.btn-primary(type='submit') Update
+            else
+                form(action='/articles/add' method='POST')
+                    .form-group
+                        label(for='title') Title:
+                        input#title.form-control(type='text' name='title' placeholder='title')
+                    //.form-group
+                    //    label(for='author') Author:
+                    //    input#author.form-control(type='text' name='author' placeholder='author')
+                    .form-group
+                        label(for='content') Body:
+                        textarea#content.form-control(name='body' placeholder='content')
+                    button.btn.btn-primary(type='submit') Add

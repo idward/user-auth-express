@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .row
+        .col-md-8.col-md-offset-2
+            h1.display-4.m-b-2 #{title}
+            ul.list-group
+                each article in articles
+                    li.list-group-item
+                        a(href='/article/' + article._id)=article.title
+                        a.btn.btn-primary.btn-sm.right.delete_btn(href='#' data-id=article._id) delete
+                        a.btn.btn-primary.btn-sm.right.update_btn(href='/articles/update/' + article._id) modify
+            a.btn.btn-primary.btn-sm.left.add_btn(href='/articles/add') Add Article

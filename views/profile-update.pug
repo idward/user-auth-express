@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    //.main.container.clearfix
+    .row
+        .col-md-8.col-md-offset-2
+            form#profile(action='#' method='POST')
+                .form-group
+                    label(for='name') Name:
+                    input#name.form-control(type='text' name='name' value=user.name)
+                .form-group
+                    label(for='favorite') Favorite Book:
+                    input#favorite.form-control(type='text' name='favoriteBook' value=user.favoriteBook)
+                .form-group
+                    label(for='email') Email:
+                    input#email.form-control(type='text' name='email' value=user.email)
+                .form-group
+                    input#userId(type='hidden' name='id' value=user._id)
+                    button.btn.btn-primary.profile-update(type='button') Submit
